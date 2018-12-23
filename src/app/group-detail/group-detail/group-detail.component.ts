@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { AddNewPostComponent } from '../add-new-post/add-new-post.component';
 import { AddUserToGroupComponent } from '../add-user-to-group/add-user-to-group.component';
+import { Location } from '@angular/common';
 
 export interface GroupDetail {
   name: string;
@@ -25,13 +26,12 @@ export class GroupDetailComponent implements OnInit {
   groupDetail?: GroupDetail;
 
   constructor(private db: AngularFirestore, private authService: AuthService,
-    private route: ActivatedRoute, private dialog: MatDialog) {
+    private route: ActivatedRoute, private location: Location, private dialog: MatDialog) {
     this.user = this.authService.getUser();
     const groups = this.db.collection(`/groups`);
     this.route.params.subscribe(params => {
       this.groupDetailDoc = groups.doc<GroupDetail>(`/${params.groupId}`);
       this.groupDetailDoc.snapshotChanges().subscribe(data => {
-        // this.groupDetail = data
         this.groupDetail = <GroupDetail>{
           ...data.payload.data(),
           id: data.payload.id
@@ -82,5 +82,9 @@ export class GroupDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe((isAdded) => {
       console.log('user added: ', isAdded);
     });
+  }
+
+  handleBack() {
+    this.location.back();
   }
 }

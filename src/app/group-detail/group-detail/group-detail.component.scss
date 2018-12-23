@@ -1,0 +1,16 @@
+
+.toolbar {
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .group-name {
+    padding-left: 5px;
+  }
+}
+
+.add-new-post-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+}

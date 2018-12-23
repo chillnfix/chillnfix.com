@@ -1,7 +1,15 @@
 
+@import "~@angular/material/theming";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@include mat-core();
 
-@import "./custom-theme.scss";
+$my-theme-primary: mat-palette($mat-blue-gray, 500);
+$my-theme-accent: mat-palette($mat-blue-gray, 700);
+$my-theme-warn: mat-palette($mat-red, 800);
+
+$my-theme: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
+
+@include angular-material-theme($my-theme);

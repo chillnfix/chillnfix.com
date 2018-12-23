@@ -1,8 +1,30 @@
-<div>
-  <button mat-button (click)="openCreateDialog()">create new</button>
-  <mat-list>
-    <mat-list-item *ngFor="let item of items | async">
-      <a routerLink="{{item.groupId}}/posts">{{item.name}}</a>
-    </mat-list-item>
-  </mat-list>
-</div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>chillNFix</span>
+    <span class="spacer"></span>
+    <mat-icon class="search-icon">search</mat-icon>
+    <mat-icon class="icon">more_vert</mat-icon>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<mat-tab-group mat-stretch-tabs backgroundColor="primary">
+  <mat-tab label="Groups">
+    <!-- groups tab -->
+    <mat-list>
+      <mat-list-item routerLink="{{item.groupId}}/posts" *ngFor="let item of items | async">
+        <mat-icon mat-list-icon>photo</mat-icon>
+        <h4 mat-line>{{item.name}}</h4>
+        <p mat-line>last post will appear here</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-tab>
+
+  <!-- notifications tab -->
+  <mat-tab label="Notifications">
+    Not Implemented Yet.
+  </mat-tab>
+</mat-tab-group>
+
+<button mat-fab color="accent" class="create-group-btn" (click)="openCreateDialog()">
+  <mat-icon>add</mat-icon>
+</button>

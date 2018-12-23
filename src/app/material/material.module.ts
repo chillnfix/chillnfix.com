@@ -6,7 +6,11 @@ import {
   MatInputModule,
   MatButtonModule,
   MatIconModule,
-  MatDialogModule
+  MatDialogModule,
+  MatToolbarModule,
+  MatTabsModule,
+  MatCardModule,
+  MatMenuModule
 } from '@angular/material';
 
 @NgModule({
@@ -20,7 +24,11 @@ import {
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatCardModule,
+    MatMenuModule
   ]
 })
 export class MaterialModule { }
