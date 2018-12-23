@@ -1,0 +1,86 @@
+import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { AddNewPostComponent } from '../add-new-post/add-new-post.component';
+import { AddUserToGroupComponent } from '../add-user-to-group/add-user-to-group.component';
+
+export interface GroupDetail {
+  name: string;
+  id: string;
+}
+
+@Component({
+  selector: 'app-group-detail',
+  templateUrl: './group-detail.component.html',
+  styleUrls: ['./group-detail.component.scss']
+})
+export class GroupDetailComponent implements OnInit {
+  user: firebase.User | null;
+  posts$: Observable<any> = of([]);
+  groupDetailDoc?: AngularFirestoreDocument<GroupDetail>;
+  groupDetail?: GroupDetail;
+
+  constructor(private db: AngularFirestore, private authService: AuthService,
+    private route: ActivatedRoute, private dialog: MatDialog) {
+    this.user = this.authService.getUser();
+    const groups = this.db.collection(`/groups`);
+    this.route.params.subscribe(params => {
+      this.groupDetailDoc = groups.doc<GroupDetail>(`/${params.groupId}`);
+      this.groupDetailDoc.snapshotChanges().subscribe(data => {
+        // this.groupDetail = data
+        this.groupDetail = <GroupDetail>{
+          ...data.payload.data(),
+          id: data.payload.id
+        }
+      });
+      this.posts$ = this.groupDetailDoc.collection('/posts').snapshotChanges().pipe(
+        map(actions => {
+          return actions.map(item => {
+            return {
+              id: item.payload.doc.id,
+              ...item.payload.doc.data()
+            }
+          });
+        })
+      );
+    });
+  }
+
+  ngOnInit() {
+  }
+
+  addNewPost() {
+    const dialogRef = this.dialog.open(AddNewPostComponent);
+    dialogRef.afterClosed().subscribe(post => {
+      const user = this.authService.getUser();
+      if (!post || !this.groupDetailDoc || !user) return;
+      this.groupDetailDoc.collection('/posts').add({
+        post: post,
+        postedBy: {
+          displayName: user.displayName,
+          uid: user.uid
+        }
+      });
+      console.log('new post: ', post);
+    });
+  }
+
+  addUserByEmail() {
+    if (!this.groupDetail || !this.user) return;
+
+    const dialogRef = this.dialog.open(AddUserToGroupComponent, {
+      width: '250px',
+      data: {
+        groupId: this.groupDetail.id,
+        uid: this.user.uid
+      }
+    });
+    dialogRef.afterClosed().subscribe((isAdded) => {
+      console.log('user added: ', isAdded);
+    });
+  }
+}

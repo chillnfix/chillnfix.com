@@ -1,0 +1,8 @@
+<div>
+  <button mat-button (click)="openCreateDialog()">create new</button>
+  <mat-list>
+    <mat-list-item *ngFor="let item of items | async">
+      <a routerLink="{{item.groupId}}/posts">{{item.name}}</a>
+    </mat-list-item>
+  </mat-list>
+</div>
