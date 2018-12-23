@@ -1,0 +1,28 @@
+
+<div class="container">
+    <div id="login" class="login">
+      <div class="login-icon-field">
+      </div>
+      <form class="login-form">
+          <mat-form-field class="full-width">
+            <mat-icon matPrefix class="prefix">email &nbsp;</mat-icon>
+            <input type="email" class="username-input" matInput placeholder="Email">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-icon matPrefix class="prefix">eye</mat-icon>
+            <input type="password" matInput placeholder="Password">
+          </mat-form-field>
+          <button mat-raised-button (click)="login()" color="accent">Log In</button>
+      </form>
+      <div>
+        <p>Don't have an account? <a routerLink="/auth/signup">Sign Up</a></p>
+      </div>
+      <div>
+        <div class="social-header">Sign in with</div>
+        <button mat-flat-button color="warn" (click)="googleLogin()">
+          G
+        </button>
+        <button mat-flat-button color="primary">fb</button>
+      </div>
+    </div>
+  </div>
