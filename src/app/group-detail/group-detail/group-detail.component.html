@@ -1,0 +1,16 @@
+<div>
+  <ng-container *ngIf="groupDetail">
+    <h3>{{groupDetail.name}}</h3>
+    <div>
+      <i>members: {{ groupDetail.members.length }}</i>
+    </div>
+  </ng-container>
+  <button mat-button (click)="addNewPost()">New Post</button>
+  <mat-list>
+    <mat-list-item *ngFor="let post of posts$ | async">
+      <div>{{post.post}}</div>
+      <div><i>posted by: {{ post.postedBy.displayName }}</i></div>
+    </mat-list-item>
+  </mat-list>
+  <button mat-button (click)="addUserByEmail()">Add User</button>
+</div>

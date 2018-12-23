@@ -1,0 +1,92 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 1px 0;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-family: "Comfortaa", "Helvetica", sans-serif;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.login-icon-field {
+  height: 250px;
+  width: 100%;
+}
+
+.login-icon {
+  margin: 50px 65px;
+}
+
+.login-form {
+  padding: 8px 20px 20px;
+  width: 100%;
+
+  .prefix {
+    color: black;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+}
+
+.social-header {
+  color: black;
+}
+
+.login-button {
+  display: block;
+  width: 240px;
+  height: 40px;
+  padding: 0;
+  margin: 10px 20px 10px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #22c08a;
+  border: none;
+  border-radius: 20px;
+  transition: background-color .10s ease-in-out;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: #26d69a;
+  }
+  
+  &:active {
+    background-color: #1eaa7a;
+  }
+}
+
+
+p {
+  display: inline-block;
+  width: 200px;
+  margin: 0 40px;
+  font-size: .8rem;
+  color: black;
+}
+
+p a {
+  color: black;
+}
+
+label,
+p a:hover {
+  -webkit-cursor: pointer;
+  cursor: pointer;
+}
