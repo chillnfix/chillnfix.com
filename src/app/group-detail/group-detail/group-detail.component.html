@@ -1,16 +1,22 @@
-<div>
-  <ng-container *ngIf="groupDetail">
-    <h3>{{groupDetail.name}}</h3>
-    <div>
-      <i>members: {{ groupDetail.members.length }}</i>
-    </div>
-  </ng-container>
-  <button mat-button (click)="addNewPost()">New Post</button>
-  <mat-list>
-    <mat-list-item *ngFor="let post of posts$ | async">
-      <div>{{post.post}}</div>
-      <div><i>posted by: {{ post.postedBy.displayName }}</i></div>
-    </mat-list-item>
-  </mat-list>
-  <button mat-button (click)="addUserByEmail()">Add User</button>
-</div>
+<mat-toolbar color="primary" class="toolbar">
+  <mat-icon (click)="handleBack()">arrow_back</mat-icon>
+  <span class="group-name">{{groupDetail?.name}}</span>
+  <span class="spacer"></span>
+  <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <span (click)="addUserByEmail()">Add members</span>
+  </button>
+</mat-menu>
+
+<mat-list>
+  <mat-list-item *ngFor="let post of posts$ | async">
+    <p mat-line>{{post.post}} </p>
+  </mat-list-item>
+</mat-list>
+
+<button mat-fab color="accent" class="add-new-post-btn" (click)="addNewPost()">
+  <mat-icon>add</mat-icon>
+</button>
