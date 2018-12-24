@@ -14,6 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     HomeRoutingModule,
   ],
-  declarations: [GroupListComponent]
+  declarations: []
 })
 export class HomeModule { }

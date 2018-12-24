@@ -1,0 +1,23 @@
+language: node_js
+sudo: false
+dist: trusty
+node_js:
+  - '10.12.0'
+
+cache:
+  yarn: true
+  directories:
+    - ./node_modules
+
+git:
+  depth: false
+  
+before_install:
+  # source the env.sh script so that the exported variables are available to other scripts later on
+  - source ./scripts/ci/env.sh print
+
+install:
+  - ./scripts/ci/install.sh
+
+script:
+  - ./scripts/ci/build.sh
