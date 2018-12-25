@@ -11,7 +11,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [Development server](#Development-server)
 * [Run Tests](#run-tests)
 * [Code scaffolding](#Code-scaffolding)
-* [build](#build)
+* [Build](#Build)
 * [Running unit tests](#run-unit-tests)
 * [Build Application for Deployment](#build-application-for-deployment)
 * [Bugs / Feature request](#bugs--feature-request)
@@ -36,7 +36,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## build
+## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
@@ -47,12 +47,12 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 **Execute e2e tests:**
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 ```SH
-$ npm run protractor
+$ npm run e2e
 ```
 
 ## Bugs / Feature request
 feel free to report bugs and other features
 
-## want to help?
+## further help?
 Want to file a bug, contribute some code, or improve documentation? Excellent! Read up on our guidelines for contributing and then check out one of our issues in the hotlist:
 
