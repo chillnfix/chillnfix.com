@@ -1,4 +1,4 @@
-## <a name="coc"></a> Code of Conduct
+## [coc](https://github.com/chillNFix/chillnfix.com/blob/master/CONTRIBUTING.md)</a> Code of Conduct
 
 As contributors and maintainers of the chillNFix project, we pledge to respect everyone who contributes by posting issues, updating documentation, submitting pull requests, providing feedback in comments, and any other activities.
 
