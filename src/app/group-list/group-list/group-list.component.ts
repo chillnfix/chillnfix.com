@@ -29,7 +29,7 @@ export class GroupListComponent implements OnInit {
           return {
             id: item.payload.doc.id,
             ...item.payload.doc.data()
-          }
+          };
         });
       })
     );
@@ -45,7 +45,7 @@ export class GroupListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(async name => {
-      if (!name || !this.user) return;
+      if (!name || !this.user) { return; }
       this.groupService.createGroup(name, this.user.uid).subscribe((res: any) => {
         console.log('res: ', res);
         this.router.navigate([`/groups/${res.id}/posts`]);
@@ -53,62 +53,3 @@ export class GroupListComponent implements OnInit {
     });
   }
 }
-
-/*
-
-users
-  userid
-    ...userinfo
-    groups: [ group_id ]
-
-groups
-  groupid (auto generated)
-    ...groupinfo { name, timestamp }
-    members: [ userid ]
-    posts: [
-      { ...postinfo }
-    ]
-
-posts
-  groupid
-    ...postinfo
-
-
-
-
-
-
-==================
-==================
-
-groups
-  userid
-    groups
-      group 1
-      group 2
-      group 3
------------------
-groups
-  groupid
-    createdat
-    members [ MiniUserItem { name, icon, id } ]
-
-
-users
-  userid
-    username
-    groups [ MiniGroupItem { name, icon, id } ]
-
-
-find user groups
-- users/userid - groups
-will get only groupids
-to list names of group one query for each.
-minigroupitem can serve purpose.
-
-
-find members in a group (groupid)
-- groups/groupid - members
-
-
-*/

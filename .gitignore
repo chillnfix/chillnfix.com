@@ -41,3 +41,5 @@ Thumbs.db
 # Environment Files
 src/environments/environment.local.ts
 functions
+
+.vscode

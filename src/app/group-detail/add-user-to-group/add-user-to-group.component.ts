@@ -5,16 +5,14 @@ import { GroupService } from 'src/app/services/group/group.service';
 @Component({
   selector: 'app-add-user-to-group',
   templateUrl: './add-user-to-group.component.html',
-  styleUrls: ['./add-user-to-group.component.scss']
 })
 export class AddUserToGroupComponent implements OnInit {
-  email: string = "";
+  email = '';
   constructor(public dialogRef: MatDialogRef<AddUserToGroupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private groupService: GroupService) { }
 
 
   ngOnInit() {
-
   }
 
   addUser() {
@@ -22,7 +20,6 @@ export class AddUserToGroupComponent implements OnInit {
     this.groupService.addUserByEmail(this.email, this.data.uid, this.data.groupId)
       .subscribe(
         () => this.dialogRef.close(true),
-        () => this.dialogRef.close())
+        () => this.dialogRef.close());
   }
-
 }

@@ -1,15 +1,20 @@
 
 @import "~@angular/material/theming";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
+html,
+body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
 
 // only include once per project.
-@include mat-core();
+@include mat-core(); // stylelint-disable-line
 
 // include custom themes.
 @import 'light-theme.scss';
 
 .light-theme {
-  @include angular-material-theme($light-theme);
+  @include angular-material-theme($light-theme); // stylelint-disable-line
 }

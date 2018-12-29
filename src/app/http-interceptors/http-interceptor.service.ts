@@ -12,7 +12,7 @@ export class HttpInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const cloneReq = req.clone({
       url: `${environment.cloudFunctionsDomain}${req.url}`
-    })
+    });
     return next.handle(cloneReq);
   }
 }

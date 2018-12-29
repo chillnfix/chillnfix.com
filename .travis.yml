@@ -20,4 +20,5 @@ install:
   - ./scripts/ci/install.sh
 
 script:
+  - ./scripts/ci/lint.sh
   - ./scripts/ci/build.sh
