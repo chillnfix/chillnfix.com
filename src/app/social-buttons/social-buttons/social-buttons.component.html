@@ -1,0 +1,23 @@
+<div class="social-header">Sign in with</div>
+<mat-grid-list cols="4" rowHeight="2:1">
+  <mat-grid-tile>
+    <button mat-raised-button class="btn google-btn" (click)="socialClick(socialButton.Google)">
+      Google+
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-raised-button class="btn github-btn" (click)="socialClick(socialButton.Github)">
+      Github
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-raised-button class="btn twitter-btn" (click)="socialClick(socialButton.Twitter)">
+      Twitter
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-raised-button class="btn linkedin-btn" (click)="socialClick(socialButton.LinkedIn)">
+      Linkedin
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
