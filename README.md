@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/chillNFix/chillnfix.com/tree/master.svg?style=shield)](https://circleci.com/gh/chillNfix/chillnfix.com/tree/master)
 [![Build Status](https://travis-ci.com/chillNFix/chillnfix.com.svg?branch=master)](https://travis-ci.com/chillNFix/chillnfix.com)
 [![Join the chat at https://gitter.im/chillNFix/chillnfix.com](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/chillNFix/chillnfix.com)
 
