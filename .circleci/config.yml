@@ -1,0 +1,58 @@
+
+var_1: &default_docker_image circleci/node:10.12
+var_2: &cache_key v2-chillnfix.com-{{ .Branch }}-{{ checksum "yarn.lock" }}-node-10.12
+
+
+# Settings common to each job
+var_3: &job_defaults
+  working_directory: ~/chillnfix.com
+  docker:
+  - image: *default_docker_image
+
+
+# After checkout, rebase on top of master.
+# See https://discuss.circleci.com/t/1662
+var_4: &post_checkout
+  post: git pull --ff-only origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
+
+
+var_5: &yarn_install
+  run:
+    name: Running Yarn install
+    command: yarn install --frozen-lockfile --non-interactive
+
+
+version: 2
+jobs:
+  lint:
+    <<: *job_defaults
+    steps:
+      - checkout
+        <<: *post_checkout
+      - restore_cache:
+          key: *cache_key
+      - *yarn_install
+      - save_cache:
+          key: *cache_key
+          paths:
+            - "node_modules"
+      - run: npm run tslint
+      - run: npm run stylelint
+
+  build:
+    <<: *job_defaults
+    steps:
+      - checkout
+        <<: *post_checkout
+      - restore_cache:
+          key: *cache_key
+      - *yarn_install
+      - run: npm run build_prod
+
+
+workflows:
+  version: 2
+  default_workflow:
+    jobs:
+      - lint
+      - build
