@@ -27,8 +27,8 @@ jobs:
   lint:
     <<: *job_defaults
     steps:
-      - checkout
-        <<: *post_checkout
+      - checkout:
+          <<: *post_checkout
       - restore_cache:
           key: *cache_key
       - *yarn_install
@@ -42,8 +42,8 @@ jobs:
   build:
     <<: *job_defaults
     steps:
-      - checkout
-        <<: *post_checkout
+      - checkout:
+          <<: *post_checkout
       - restore_cache:
           key: *cache_key
       - *yarn_install
