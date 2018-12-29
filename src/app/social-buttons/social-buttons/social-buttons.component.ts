@@ -8,14 +8,14 @@ import { SocialButton } from 'src/app/enums/social-button.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SocialButtonsComponent implements OnInit {
-  @Output() onSocialClick = new EventEmitter<SocialButton>();
+  @Output() socialClick = new EventEmitter<SocialButton>();
   socialButton = SocialButton;
   constructor() { }
 
   ngOnInit() {
   }
 
-  socialClick(account: SocialButton) {
-    this.onSocialClick.emit(account)
+  onSocialClick(account: SocialButton) {
+    this.socialClick.emit(account);
   }
 }

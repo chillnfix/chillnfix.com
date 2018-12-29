@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "your api key",
-    authDomain: "auth domain",
-    databaseURL: "database url",
-    projectId: "project id",
-    storageBucket: "storage  bucket",
-    messagingSenderId: "messaging id"
+    apiKey: 'your api key',
+    authDomain: 'auth domain',
+    databaseURL: 'database url',
+    projectId: 'project id',
+    storageBucket: 'storage  bucket',
+    messagingSenderId: 'messaging id'
   },
   firebaseDomain: 'firebase domain',
   cloudFunctionsDomain: `cloud functions domain`

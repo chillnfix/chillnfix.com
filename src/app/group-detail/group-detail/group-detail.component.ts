@@ -35,7 +35,7 @@ export class GroupDetailComponent implements OnInit {
         this.groupDetail = <GroupDetail>{
           ...data.payload.data(),
           id: data.payload.id
-        }
+        };
       });
       this.posts$ = this.groupDetailDoc.collection('/posts').snapshotChanges().pipe(
         map(actions => {
@@ -43,7 +43,7 @@ export class GroupDetailComponent implements OnInit {
             return {
               id: item.payload.doc.id,
               ...item.payload.doc.data()
-            }
+            };
           });
         })
       );
@@ -57,7 +57,7 @@ export class GroupDetailComponent implements OnInit {
     const dialogRef = this.dialog.open(AddNewPostComponent);
     dialogRef.afterClosed().subscribe(post => {
       const user = this.authService.getUser();
-      if (!post || !this.groupDetailDoc || !user) return;
+      if (!post || !this.groupDetailDoc || !user) { return; }
       this.groupDetailDoc.collection('/posts').add({
         post: post,
         postedBy: {
@@ -70,7 +70,7 @@ export class GroupDetailComponent implements OnInit {
   }
 
   addUserByEmail() {
-    if (!this.groupDetail || !this.user) return;
+    if (!this.groupDetail || !this.user) { return; }
 
     const dialogRef = this.dialog.open(AddUserToGroupComponent, {
       width: '250px',

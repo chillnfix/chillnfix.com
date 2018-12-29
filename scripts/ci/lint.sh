@@ -7,14 +7,12 @@ set -e -u -o pipefail
 readonly thisDir=$(cd $(dirname $0); pwd)
 source ${thisDir}/_travis-fold.sh
 
-# create logs dir
-mkdir -p ${LOGS_DIR}
 
-
-# Install all npm dependencies according to yarn.lock
-travisFoldStart "yarn-install"
-  yarn install --frozen-lockfile --non-interactive
-travisFoldEnd "yarn-install"
+# run linting
+travisFoldStart "linting"
+  npm run tslint
+  npm run stylelint
+travisFoldEnd "linting"
 
 
 # Print return arrows as a log separator

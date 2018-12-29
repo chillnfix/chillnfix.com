@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithSocial(account: SocialButton) {
-    switch(account) {
+    switch (account) {
       case SocialButton.Google:
         this.googleLogin();
         break;
