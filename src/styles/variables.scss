@@ -1,0 +1,11 @@
+// Import material theming functions
+@import '~@angular/material/theming';
+
+$my-theme-primary: mat-palette($mat-blue-gray, 500);
+$my-theme-accent: mat-palette($mat-blue-gray, 700);
+$my-theme-warn: mat-palette($mat-red, 800);
+
+
+$primary: mat-color($my-theme-primary);
+$accent: mat-color($my-theme-accent);
+$warn: mat-color($my-theme-warn);

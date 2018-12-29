@@ -4,12 +4,12 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
 
+// only include once per project.
 @include mat-core();
 
-$my-theme-primary: mat-palette($mat-blue-gray, 500);
-$my-theme-accent: mat-palette($mat-blue-gray, 700);
-$my-theme-warn: mat-palette($mat-red, 800);
+// include custom themes.
+@import 'light-theme.scss';
 
-$my-theme: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
-
-@include angular-material-theme($my-theme);
+.light-theme {
+  @include angular-material-theme($light-theme);
+}

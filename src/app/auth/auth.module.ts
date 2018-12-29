@@ -5,8 +5,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SignupComponent } from './signup/signup.component';
 import { MaterialModule } from '../material/material.module';
+import { SocialButtonsModule } from '../social-buttons/social-buttons.module';
 
 @NgModule({
   imports: [
@@ -16,11 +16,9 @@ import { MaterialModule } from '../material/material.module';
     FormsModule,
     ReactiveFormsModule,
 
+    SocialButtonsModule,
     MaterialModule
   ],
-  declarations: [LoginComponent, SignupComponent],
-  entryComponents: [
-    LoginComponent
-  ]
+  declarations: [LoginComponent]
 })
 export class AuthModule { }
