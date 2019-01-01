@@ -1,6 +1,6 @@
 
 var_1: &default_docker_image circleci/node:10.12
-var_2: &cache_key v2-chillnfix.com-{{ .Branch }}-{{ checksum "yarn.lock" }}-node-10.12
+var_2: &cache_key v3-chillnfix.com-{{ .Branch }}-{{ checksum "yarn.lock" }}-node-10.12
 
 
 # Settings common to each job
