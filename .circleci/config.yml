@@ -52,6 +52,8 @@ jobs:
   deploy_preview:
     <<: *job_defaults
     steps:
+      - checkout:
+        <<: *post_checkout
       - restore_cache:
           key: *cache_key
       - run:
