@@ -1,7 +1,7 @@
 
 var_1: &default_docker_image circleci/node:10.12
-var_2: &cache_key v3-chillnfix.com-{{ .Branch }}-{{ checksum "yarn.lock" }}-node-10.12
-var_6: &build_cache_key v1-chillfix.com-build-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
+var_2: &cache_key v4-chillnfix.com-{{ .Branch }}-{{ checksum "yarn.lock" }}-node-10.12
+var_6: &build_cache_key v2-chillfix.com-build-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
 
 # Settings common to each job
 var_3: &job_defaults
@@ -47,12 +47,6 @@ jobs:
       - restore_cache:
           key: *cache_key
       - *yarn_install
-      - save_cache:
-          key: *build_cache_key
-          paths:
-            - "dist"
-            - "firebase.json"
-            - ".firebaserc"
       - run: npm run build_prod
       - save_cache:
           key: *build_cache_key
@@ -60,6 +54,9 @@ jobs:
             - "dist"
             - "firebase.json"
             - ".firebaserc"
+      - run: ls
+      - run: ls dist/chillnfix
+
 
   deploy_preview:
     <<: *job_defaults
