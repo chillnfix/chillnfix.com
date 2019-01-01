@@ -49,6 +49,14 @@ jobs:
       - *yarn_install
       - run: npm run build_prod
 
+  deploy_preview:
+    <<: *job_defaults
+    steps:
+      - restore_cache:
+          key: *cache_key
+      - run:
+          name: Deploy Master to Firebase (preview)
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
   version: 2
@@ -56,3 +64,9 @@ workflows:
     jobs:
       - lint
       - build
+      - deploy_preview:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
