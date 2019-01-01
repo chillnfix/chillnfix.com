@@ -18,7 +18,7 @@
     <!-- Password input -->
     <mat-form-field class="form-control">
       <mat-icon class="prefix" matPrefix>visibility</mat-icon>
-      <input matInput placeholder="Password" [formControl]="password">
+      <input type="password" matInput placeholder="Password" [formControl]="password">
       <mat-error *ngIf="password.hasError('minlength') || password.hasError('maxlength') && !password.hasError('required')">
         Password should be between 4-16 characters
       </mat-error>
