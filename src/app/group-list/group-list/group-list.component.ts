@@ -4,8 +4,8 @@ import { AuthService } from '../../auth/auth.service';
 import { Observable, of } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { CreateGroupDialogComponent } from '../../create-group-dialog/create-group-dialog.component';
-import { map, tap } from 'rxjs/operators';
-import * as firebase from 'firebase';
+import { map } from 'rxjs/operators';
+import { User } from 'firebase';
 import { GroupService } from 'src/app/services/group/group.service';
 import { Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./group-list.component.scss']
 })
 export class GroupListComponent implements OnInit {
-  user: firebase.User | null;
+  user: User | null;
   items: Observable<any> = of([]);
   userDoc: AngularFirestoreDocument;
 

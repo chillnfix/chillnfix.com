@@ -1,0 +1,16 @@
+{
+    "hosting": {
+        "public": "dist/chillnfix",
+        "ignore": [
+            "**/node_modules/**",
+            "**/.*",
+            "firebase.json"
+        ],
+        "rewrites": [
+            {
+                "source": "**",
+                "destination": "/index.html"
+            }
+        ]
+    }
+}
