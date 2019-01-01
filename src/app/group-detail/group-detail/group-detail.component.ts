@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material';
 import { AddNewPostComponent } from '../add-new-post/add-new-post.component';
 import { AddUserToGroupComponent } from '../add-user-to-group/add-user-to-group.component';
 import { Location } from '@angular/common';
+import { User } from 'firebase';
 
 export interface GroupDetail {
   name: string;
@@ -20,7 +21,7 @@ export interface GroupDetail {
   styleUrls: ['./group-detail.component.scss']
 })
 export class GroupDetailComponent implements OnInit {
-  user: firebase.User | null;
+  user: User | null;
   posts$: Observable<any> = of([]);
   groupDetailDoc?: AngularFirestoreDocument<GroupDetail>;
   groupDetail?: GroupDetail;
