@@ -32,13 +32,6 @@ jobs:
       - restore_cache:
           key: *cache_key
       - *yarn_install
-      - save_cache:
-          key: *cache_key
-          paths:
-            - "node_modules"
-            - "dist"
-            - "firebase.json"
-            - ".firebaserc"
       - run: npm run tslint
       - run: npm run stylelint
 
@@ -50,6 +43,13 @@ jobs:
       - restore_cache:
           key: *cache_key
       - *yarn_install
+      - save_cache:
+          key: *cache_key
+          paths:
+            - "node_modules"
+            - "dist"
+            - "firebase.json"
+            - ".firebaserc"
       - run: npm run build_prod
 
   deploy_preview:
