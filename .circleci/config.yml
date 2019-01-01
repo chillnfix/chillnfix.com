@@ -36,6 +36,9 @@ jobs:
           key: *cache_key
           paths:
             - "node_modules"
+            - "dist"
+            - "firebase.json"
+            - ".firebaserc"
       - run: npm run tslint
       - run: npm run stylelint
 
