@@ -43,3 +43,4 @@ src/environments/environment.local.ts
 functions
 
 .vscode
+.firebase
