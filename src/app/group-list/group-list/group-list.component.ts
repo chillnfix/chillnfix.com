@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { AuthService } from '../../auth/auth.service';
 import { Observable, of } from 'rxjs';
 import { MatDialog } from '@angular/material';
-import { CreateGroupDialogComponent } from '../../create-group-dialog/create-group-dialog.component';
+import { CreateGroupDialogComponent } from '../create-group-dialog/create-group-dialog.component';
 import { map } from 'rxjs/operators';
 import { User } from 'firebase';
 import { GroupService } from 'src/app/services/group/group.service';

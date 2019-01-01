@@ -17,7 +17,7 @@ import { SocialButtonsModule } from '../social-buttons/social-buttons.module';
     ReactiveFormsModule,
 
     SocialButtonsModule,
-    MaterialModule
+    MaterialModule,
   ],
   declarations: [LoginComponent]
 })
