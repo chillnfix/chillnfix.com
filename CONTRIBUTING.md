@@ -39,17 +39,17 @@ We want to fix all the issues as soon as possible, but before fixing a bug we ne
 
 A minimal reproduction allows us to quickly confirm a bug (or point out a coding problem) as well as confirm that we are fixing the right problem.
 
-You can file new issues by selecting from our [new issue templates](https://github.com/chillNFix/chillnfix.com/issues/new/choose) and filling out the issue template.
+You can file new issues by selecting from our [new issue templates](https://github.com/chillnfix/chillnfix.com/issues/new/choose) and filling out the issue template.
 
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
 Before you submit your Pull Request (PR) consider the following guidelines:
 
-1. Search [GitHub](https://github.com/chillNFix/chillnfix.com/pulls) for an open or closed PR
+1. Search [GitHub](https://github.com/chillnfix/chillnfix.com/pulls) for an open or closed PR
   that relates to your submission. You don't want to duplicate effort.
 1. Be sure that an issue describes the problem you're fixing, or documents the design for the feature you'd like to add.
   Discussing the design up front helps to ensure that we're ready to accept your work.
-1. Fork the chillNFix/chillnfix.com repo.
+1. Fork the chillnfix/chillnfix.com repo.
 1. Make your changes in a new git branch:
 
      ```shell
@@ -151,7 +151,7 @@ to read on GitHub as well as in various git tools.
 
 The footer should contain a [closing reference to an issue](https://help.github.com/articles/closing-issues-via-commit-messages/) if any.
 
-Samples: (even more [samples](https://github.com/chillNFix/chillnfix.com/commits/master))
+Samples: (even more [samples](https://github.com/chillnfix/chillnfix.com/commits/master))
 
 ```
 docs(changelog): update changelog to v1.1
