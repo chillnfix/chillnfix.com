@@ -54,9 +54,6 @@ jobs:
             - "dist"
             - "firebase.json"
             - ".firebaserc"
-      - run: ls
-      - run: ls dist/chillnfix
-
 
   deploy_preview:
     <<: *job_defaults
