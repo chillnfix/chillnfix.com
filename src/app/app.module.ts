@@ -11,7 +11,12 @@ import { environment } from '../environments/environment';
 import { MaterialModule } from './material/material.module';
 import { httpInterceptorProviders } from './http-interceptors';
 import { HttpClientModule } from '@angular/common/http';
-
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, metaReducers } from './store/reducers';
+import { AppEffects } from './store/effects/app.effects';
+import { UserEffects } from './store/effects/user/user.effects';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,13 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebase, 'chillnfix'),
     AngularFireAuthModule,
 
-    MaterialModule
+    MaterialModule,
+
+    StoreModule.forRoot(reducers, { metaReducers }),
+
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+
+    EffectsModule.forRoot([AppEffects, UserEffects]),
   ],
   providers: [
     httpInterceptorProviders

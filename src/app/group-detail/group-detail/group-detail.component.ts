@@ -9,6 +9,9 @@ import { AddNewPostComponent } from '../add-new-post/add-new-post.component';
 import { AddUserToGroupComponent } from '../add-user-to-group/add-user-to-group.component';
 import { Location } from '@angular/common';
 import { User } from 'firebase';
+import { Store, select } from '@ngrx/store';
+import { UserState, selectUser } from 'src/app/store/reducers/user/user.reducer';
+import { IUser } from 'src/app/models/user.model';
 
 export interface GroupDetail {
   name: string;
@@ -21,14 +24,18 @@ export interface GroupDetail {
   styleUrls: ['./group-detail.component.scss']
 })
 export class GroupDetailComponent implements OnInit {
-  user: User | null;
+  user?: IUser;
   posts$: Observable<any> = of([]);
   groupDetailDoc?: AngularFirestoreDocument<GroupDetail>;
   groupDetail?: GroupDetail;
 
   constructor(private db: AngularFirestore, private authService: AuthService,
-    private route: ActivatedRoute, private location: Location, private dialog: MatDialog) {
-    this.user = this.authService.getUser();
+    private route: ActivatedRoute, private location: Location,
+    private dialog: MatDialog, private store: Store<UserState>) {
+    // this.user = this.authService.getUser();
+    this.store.pipe(select(selectUser)).subscribe(user => {
+      this.user = user;
+    });
     const groups = this.db.collection(`/groups`);
     this.route.params.subscribe(params => {
       this.groupDetailDoc = groups.doc<GroupDetail>(`/${params.groupId}`);
@@ -57,7 +64,8 @@ export class GroupDetailComponent implements OnInit {
   addNewPost() {
     const dialogRef = this.dialog.open(AddNewPostComponent);
     dialogRef.afterClosed().subscribe(post => {
-      const user = this.authService.getUser();
+      const user = this.user;
+
       if (!post || !this.groupDetailDoc || !user) { return; }
       this.groupDetailDoc.collection('/posts').add({
         post: post,

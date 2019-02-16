@@ -10,5 +10,5 @@ export const environment = {
         projectId: 'chillnfix-dev',
     },
     firebaseDomain: FIREBASE_DOMAIN,
-    cloudFunctionsDomain: `${FIREBASE_DOMAIN}/cloudfunctions.net`
+    cloudFunctionsDomain: `${FIREBASE_DOMAIN}.cloudfunctions.net`
 };
