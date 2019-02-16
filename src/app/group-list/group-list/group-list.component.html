@@ -11,7 +11,7 @@
   <mat-tab label="Groups">
     <!-- groups tab -->
     <mat-list>
-      <mat-list-item routerLink="{{item.groupId}}/posts" *ngFor="let item of items | async">
+      <mat-list-item routerLink="{{item.groupId}}/posts" *ngFor="let item of items$ | async">
         <mat-icon mat-list-icon>photo</mat-icon>
         <h4 mat-line>{{item.name}}</h4>
         <p mat-line>last post will appear here</p>

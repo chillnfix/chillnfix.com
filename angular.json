@@ -9,7 +9,7 @@
       "projectType": "application",
       "prefix": "app",
       "schematics": {
-        "@schematics/angular:component": {
+        "@ngrx/schematics:component": {
           "styleext": "scss"
         }
       },
@@ -147,5 +147,8 @@
       }
     }
   },
-  "defaultProject": "chillnfix"
+  "defaultProject": "chillnfix",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
