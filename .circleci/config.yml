@@ -1,10 +1,10 @@
 
 var_1: &default_docker_image circleci/node:10.12
 var_2: &cache_key v4-chillnfix.com-{{ .Branch }}-{{ checksum "yarn.lock" }}-node-10.12
-var_6: &build_cache_key v2-chillfix.com-build-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
+var_3: &build_cache_key v2-chillfix.com-build-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
 
 # Settings common to each job
-var_3: &job_defaults
+var_4: &job_defaults
   working_directory: ~/chillnfix.com
   docker:
   - image: *default_docker_image
@@ -12,11 +12,23 @@ var_3: &job_defaults
 
 # After checkout, rebase on top of master.
 # See https://discuss.circleci.com/t/1662
-var_4: &post_checkout
+var_5: &post_checkout
   post: git pull --ff-only origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
 
 
-var_5: &yarn_install
+# Initializes the CI environment by setting up common environment variables.
+# var_6: &init_environment
+#   run:
+#     name: Initializing environment (setting up variables, overwriting Yarn)
+#     # Overwrite the yarn installed in the docker container with our own version.
+#     command: |
+#       ourYarn=$(realpath ./third_party/github.com/yarnpkg/yarn/releases/download/v1.16.0/yarn-1.16.0.js)
+#       sudo chmod a+x $ourYarn
+#       sudo ln -fs $ourYarn /usr/local/bin/yarn
+#       echo "Yarn version: $(yarn --version)"
+
+
+var_7: &yarn_install
   run:
     name: Running Yarn install
     command: yarn install --frozen-lockfile --non-interactive
@@ -31,6 +43,7 @@ jobs:
           <<: *post_checkout
       - restore_cache:
           key: *cache_key
+      # - *init_environment
       - *yarn_install
       - save_cache:
           key: *cache_key
@@ -46,6 +59,7 @@ jobs:
           <<: *post_checkout
       - restore_cache:
           key: *cache_key
+      # - *init_environment
       - *yarn_install
       - run: npm run build_prod
       - save_cache:
