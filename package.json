@@ -1,6 +1,18 @@
 {
   "name": "chillnfix",
   "version": "1.0.0-alpha",
+  "private": true,
+  "description": "ChillnFix - A Web Application for collabrative teams",
+  "homepage": "https://github.com/chillnfix/chillnfix.com",
+  "license": "GPL-3.0",
+  "engines": {
+    "node": ">=10.9.0 <11.0.0",
+    "yarn": ">=1.10.0 <=1.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chillnfix/chillnfix.com.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve -c development",
@@ -12,7 +24,6 @@
     "tslint": "ng lint",
     "lint": "npm run tslint && npm run stylelint"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~8.0.0",
     "@angular/cdk": "~7.3.2",
@@ -59,10 +70,10 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
-    "stylelint": "^9.10.1",
-    "stylelint-config-standard": "^18.2.0",
-    "ts-node": "~7.0.0",
-    "tslint": "~5.15.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0",
+    "ts-node": "~8.2.0",
+    "tslint": "~5.16.0",
     "typescript": "~3.4.3"
   }
 }
