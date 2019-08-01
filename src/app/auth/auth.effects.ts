@@ -5,7 +5,7 @@ import { Observable, of, from } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { mergeMap, catchError, map } from 'rxjs/operators';
 import * as fromAuth from '../actions/auth.actions';
-import { auth } from 'firebase';
+import { auth } from 'firebase/app';
 
 
 @Injectable()
