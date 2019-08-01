@@ -22,8 +22,8 @@ export class GroupListComponent implements OnInit {
   items$: Observable<any> = of([]);
   userDoc?: AngularFirestoreDocument;
 
-  constructor(private db: AngularFirestore,
-    private store: Store<any>,
+  constructor(
+    private db: AngularFirestore, private store: Store<any>,
     private dialog: MatDialog, private router: Router, private groupService: GroupService) {
     this.user$ = this.store.pipe(select(selectUser));
 

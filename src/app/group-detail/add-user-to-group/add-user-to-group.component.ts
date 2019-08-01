@@ -8,8 +8,10 @@ import { GroupService } from 'src/app/services/group/group.service';
 })
 export class AddUserToGroupComponent implements OnInit {
   email = '';
-  constructor(public dialogRef: MatDialogRef<AddUserToGroupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private groupService: GroupService) { }
+  constructor(
+    public dialogRef: MatDialogRef<AddUserToGroupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private groupService: GroupService) { }
 
 
   ngOnInit() {
