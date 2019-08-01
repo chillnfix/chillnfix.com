@@ -7,8 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class CreateGroupDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<CreateGroupDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialogRef: MatDialogRef<CreateGroupDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }

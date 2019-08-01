@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
   password: FormControl;
   isSignIn = true;
 
-  constructor(private afAuth: AngularFireAuth, private router: Router,
-    private store: Store<UserState>) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, private store: Store<UserState>) {
     this.email = new FormControl('', [
       Validators.required,
       Validators.email

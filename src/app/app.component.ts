@@ -12,8 +12,7 @@ import { AppState } from './store/reducers';
 })
 export class AppComponent implements OnInit {
   themeClass: string;
-  constructor(private overlayContainer: OverlayContainer,
-    private store: Store<AppState>) {
+  constructor(private overlayContainer: OverlayContainer, private store: Store<AppState>) {
     this.themeClass = 'light-theme';
 
     // remove old theme class and add new theme class

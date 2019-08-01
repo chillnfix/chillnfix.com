@@ -29,7 +29,8 @@ export class GroupDetailComponent implements OnInit {
   groupDetailDoc?: AngularFirestoreDocument<GroupDetail>;
   groupDetail?: GroupDetail;
 
-  constructor(private db: AngularFirestore, private authService: AuthService,
+  constructor(
+    private db: AngularFirestore, private authService: AuthService,
     private route: ActivatedRoute, private location: Location,
     private dialog: MatDialog, private store: Store<UserState>) {
     // this.user = this.authService.getUser();
@@ -40,10 +41,10 @@ export class GroupDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.groupDetailDoc = groups.doc<GroupDetail>(`/${params.groupId}`);
       this.groupDetailDoc.snapshotChanges().subscribe(data => {
-        this.groupDetail = <GroupDetail>{
+        this.groupDetail = {
           ...data.payload.data(),
           id: data.payload.id
-        };
+        } as GroupDetail;
       });
       this.posts$ = this.groupDetailDoc.collection('/posts').snapshotChanges().pipe(
         map(actions => {
@@ -68,7 +69,7 @@ export class GroupDetailComponent implements OnInit {
 
       if (!post || !this.groupDetailDoc || !user) { return; }
       this.groupDetailDoc.collection('/posts').add({
-        post: post,
+        post,
         postedBy: {
           displayName: user.displayName,
           uid: user.uid
