@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/92f8faadb65e4adf91a2a3c92ff09fdf)](https://app.codacy.com/app/ubaidazad/chillnfix.com?utm_source=github.com&utm_medium=referral&utm_content=chillnfix/chillnfix.com&utm_campaign=Badge_Grade_Dashboard)
 [![CircleCI](https://circleci.com/gh/chillnfix/chillnfix.com/tree/master.svg?style=shield)](https://circleci.com/gh/chillNfix/chillnfix.com/tree/master)
 [![Build Status](https://travis-ci.com/chillnfix/chillnfix.com.svg?branch=master)](https://travis-ci.com/chillnfix/chillnfix.com)
 [![Join the chat at https://gitter.im/chillnfix/chillnfix.com](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/chillnfix/chillnfix.com)
