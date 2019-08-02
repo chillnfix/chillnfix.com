@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { User } from 'firebase';
+import { User } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'

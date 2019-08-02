@@ -8,7 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as userActions from '../../actions/user/user.actions';
 import * as authActions from '../../../actions/auth.actions';
 import { User } from 'src/app/models/user.model';
-import { auth as firebaseAuth } from 'firebase';
+import { auth as firebaseAuth } from 'firebase/app';
 
 @Injectable()
 export class UserEffects {

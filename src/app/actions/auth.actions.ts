@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { User } from 'firebase';
+import { User } from 'firebase/app';
 
 export enum ActionTypes {
     LOGIN = '[Auth] LOGIN',

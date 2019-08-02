@@ -8,7 +8,6 @@ import { MatDialog } from '@angular/material';
 import { AddNewPostComponent } from '../add-new-post/add-new-post.component';
 import { AddUserToGroupComponent } from '../add-user-to-group/add-user-to-group.component';
 import { Location } from '@angular/common';
-import { User } from 'firebase';
 import { Store, select } from '@ngrx/store';
 import { UserState, selectUser } from 'src/app/store/reducers/user/user.reducer';
 import { IUser } from 'src/app/models/user.model';
