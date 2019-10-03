@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AuthService } from '../../auth/auth.service';
-import { Observable, of } from 'rxjs';
+import { Observable, of, combineLatest } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { CreateGroupDialogComponent } from '../create-group-dialog/create-group-dialog.component';
-import { map, concatMap, concat, mergeMap } from 'rxjs/operators';
+import { map, concatMap, concat, mergeMap, tap } from 'rxjs/operators';
 import { GroupService } from 'src/app/services/group/group.service';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
@@ -19,7 +19,7 @@ import { User } from 'src/app/models/user.model';
 export class GroupListComponent implements OnInit {
   user?: User;
   user$: Observable<User>;
-  items$: Observable<any> = of([]);
+  items: Array<any> = [];
   userDoc?: AngularFirestoreDocument;
 
   constructor(
@@ -34,9 +34,33 @@ export class GroupListComponent implements OnInit {
         }
         this.user = user;
         this.userDoc = this.db.doc(`/users/${user.uid}`);
-        this.items$ = this.getItems();
+        // get group list
+        this.getItems().subscribe(data => {
+          if (data) {
+            this.getGroupsData(data.groups).subscribe(
+              groups => { this.items = groups; console.log(this.items); }
+            );
+          }
+        });
       })
     ).subscribe();
+  }
+
+  getGroupsData(userGroups: string[] = []) {
+    const groups$: Observable<any>[] = [];
+    userGroups.map(groupId => {
+      groups$.push(this.db.collection('groups').doc(groupId).snapshotChanges());
+    });
+    return combineLatest(groups$).pipe(
+      map(([...args]) => {
+        return args.map(x => {
+          return {
+            id: x.payload.id,
+            ...x.payload.data()
+          };
+        });
+      })
+    );
   }
 
   ngOnInit() {
@@ -44,14 +68,9 @@ export class GroupListComponent implements OnInit {
 
   private getItems() {
     if (!this.userDoc) { return of([]); }
-    return this.userDoc.collection('/groups').snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(item => {
-          return {
-            id: item.payload.doc.id,
-            ...item.payload.doc.data()
-          };
-        });
+    return this.userDoc.snapshotChanges().pipe(
+      map(item => {
+        return item.payload.data();
       })
     );
   }
@@ -65,7 +84,6 @@ export class GroupListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(async name => {
       if (!name || !this.user) { return; }
       this.groupService.createGroup(name, this.user.uid).subscribe((res: any) => {
-        console.log('res: ', res);
         this.router.navigate([`/groups/${res.id}/posts`]);
       }, (err => console.error('err: ', err)));
     });
