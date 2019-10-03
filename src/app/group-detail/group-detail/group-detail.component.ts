@@ -69,10 +69,7 @@ export class GroupDetailComponent implements OnInit {
       if (!post || !this.groupDetailDoc || !user) { return; }
       this.groupDetailDoc.collection('/posts').add({
         post,
-        postedBy: {
-          displayName: user.displayName,
-          uid: user.uid
-        }
+        postedBy: user.uid
       });
       console.log('new post: ', post);
     });
